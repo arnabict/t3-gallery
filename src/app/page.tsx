@@ -1,9 +1,29 @@
 import Link from "next/link";
 
+const mockUrls = [
+  "https://sportsworld.co.uk/wp-content/smush-webp/2025/02/Real-madrid-team-1440x960.jpg.webp",
+  "https://static.vecteezy.com/ti/gratis-vektor/p1/10994249-real-madrid-logo-symbol-design-spanien-fussball-europaische-lander-fussballmannschaften-illustration-kostenlos-vektor.jpg",
+  "https://www.arsenal.com/sites/default/files/styles/desktop_16x9/public/images/mbappe-celeb-real-madrid_qhksqkhg.png?h=d797ae95&auto=webp&itok=cT2ZveMD",
+  "https://www.webwandtattoo.com/de/img/hgn006-jpg/folder/products-listado-merchant/aufkleber-wappen-real-madrid-cf.jpg",
+];
+
+const mockImages = mockUrls.map((url, index) => {
+  return {
+    id: index + 1,
+    url,
+  };
+});
+
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <h1>Hello World</h1>
+    <main>
+      <div className="felx-wrap flex gap-4">
+        {[...mockImages, ...mockImages].map((image) => (
+          <div key={image.id} className="w-48">
+            <img src={image.url} />
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
