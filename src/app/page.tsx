@@ -22,12 +22,10 @@ async function Images() {
   return (
     <div className="felx-wrap flex justify-center gap-4">
       {images.map((image) => (
-        <div key={image.id} className="flex h-48 w-48 flex-col">
+        <div key={image.id} className="relative flex h-48 w-48 flex-col">
           <Image
             src={image.url}
             style={{ objectFit: "contain" }}
-            width={192}
-            height={192}
             fill
             alt={image.name}
           />
