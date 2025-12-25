@@ -35,6 +35,9 @@ importers:
       react-dom:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
+      server-only:
+        specifier: ^0.0.1
+        version: 0.0.1
       uploadthing:
         specifier: ^7.7.4
         version: 7.7.4(next@16.0.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.17)

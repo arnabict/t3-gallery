@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 // const mockUrls = [
 //   "https://sportsworld.co.uk/wp-content/smush-webp/2025/02/Real-madrid-team-1440x960.jpg.webp",
@@ -16,11 +16,7 @@ import { db } from "~/server/db";
 // });
 
 async function Images() {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-  });
-
-  console.log(images);
+  const images = await getMyImages();
 
   return (
     <div className="felx-wrap flex gap-4">
