@@ -21,7 +21,7 @@ async function Images() {
   const images = await getMyImages();
 
   return (
-    <div className="felx-wrap flex justify-center gap-4">
+    <div className="felx-wrap flex justify-center gap-4 p-4">
       {images.map((image) => (
         <div key={image.id} className="flex h-48 w-48 flex-col">
           <Link href={`/img/${image.id}`}>
