@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getMyImages } from "~/server/queries";
 
+export const dynamic = "force-dynamic";
+
 // const mockUrls = [
 //   "https://sportsworld.co.uk/wp-content/smush-webp/2025/02/Real-madrid-team-1440x960.jpg.webp",
 //   "https://static.vecteezy.com/ti/gratis-vektor/p1/10994249-real-madrid-logo-symbol-design-spanien-fussball-europaische-lander-fussballmannschaften-illustration-kostenlos-vektor.jpg",
