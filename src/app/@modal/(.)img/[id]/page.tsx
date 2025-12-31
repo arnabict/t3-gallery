@@ -12,7 +12,7 @@ export default function PhotoModal({
 
   return (
     <Modal>
-      <FullPageImageView id={idAsNumber} />
+      <FullPageImageView photoId={photoId} />
     </Modal>
   );
 }
