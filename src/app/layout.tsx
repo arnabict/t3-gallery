@@ -2,7 +2,7 @@ import "~/styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import TopNav from "./_components/topnav";
 import "@uploadthing/react/styles.css";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
+const quicksand = Quicksand({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-quicksand",
 });
 
 export default function RootLayout({
@@ -29,20 +29,20 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <PostHogProvider>
-        <NextSSRPlugin
-          /**
-           * The `extractRouterConfig` will extract **only** the route configs
-           * from the router to prevent additional information from being
-           * leaked to the client. The data passed to the client is the same
-           * as if you were to fetch `/api/uploadthing` directly.
-           */
-          routerConfig={extractRouterConfig(ourFileRouter)}
-        />
-        <html lang="en" className={`${geist.variable}`}>
+        <html lang="en" className={`${quicksand.variable}`}>
+          <NextSSRPlugin
+            /**
+             * The `extractRouterConfig` will extract **only** the route configs
+             * from the router to prevent additional information from being
+             * leaked to the client. The data passed to the client is the same
+             * as if you were to fetch `/api/uploadthing` directly.
+             */
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
           <body>
             <div className="grid h-screen grid-rows-[auto,1fr]">
               <TopNav />
-              <main className="overflow-y-scroll">{children}</main>
+              <main>{children}</main>
               {modal}
             </div>
             <div id="modal-root" />
