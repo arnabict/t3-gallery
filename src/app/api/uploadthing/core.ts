@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 import { db } from "~/server/db";
@@ -29,6 +29,14 @@ export const ourFileRouter = {
       if (!user.userId) {
         // eslint-disable-next-line @typescript-eslint/only-throw-error
         throw new UploadThingError("Unauthorized!");
+      }
+
+      const client = await clerkClient();
+      const fullUserData = await client.users.getUser(user.userId);
+
+      if (fullUserData?.privateMetadata?.["can-upload"] !== true) {
+        // eslint-disable-next-line @typescript-eslint/only-throw-error
+        throw new UploadThingError("User Does Not Have Upload Permissions!");
       }
 
       const { success } = await ratelimit.limit(user.userId);
